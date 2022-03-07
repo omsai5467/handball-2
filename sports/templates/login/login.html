@@ -1,0 +1,63 @@
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+<!-- Optional theme -->
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handball Federation of india | Player Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/iofrm-style.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css'%}">
+</head>
+<body>
+    <div class="form-body">
+        <div class="website-logo">
+            <a href="https://handballindia.com/">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'images/HFI-Logo.png'%}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static 'images/handball-player.png'%}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Handball Federation of India</h3>
+                        <p>Register/View Handball player all over india</p>
+                        <div class="page-links">
+                            <a href="login5.html" class="active">Login</a>
+                        </div>
+                        <form action = "" method = "POST">
+                            {%  csrf_token %}
+                            <input class="form-control" type="text" name="u" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="p" placeholder="Password" required>
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Login</button> <a href="forget.html">Forget password?</a>
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <span><b>Visit Us</b></span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/popper.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/main.js'%}"></script>
+</body>
+</html>
+

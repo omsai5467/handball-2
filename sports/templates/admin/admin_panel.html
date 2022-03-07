@@ -1,0 +1,535 @@
+{% load static  %}
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kode is a Premium Bootstrap Admin Template, It's responsive, clean coded and mobile friendly">
+  <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+  <title>HFI | Handball Admin Panel</title>
+
+  <!-- ========== Css Files ========== -->
+  <link href="{% static 'css/admin/root.css'%}" rel="stylesheet">
+
+  </head>
+  <body>
+  <!-- Start Page Loading -->
+  <div class="loading"><img src="{% static 'img/admin/loading.gif'%}" alt="loading-img"></div>
+  <!-- End Page Loading -->
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+  <!-- START TOP -->
+  <div id="top" class="clearfix">
+
+  	<!-- Start App Logo -->
+  	<div class="applogo">
+  		<a href="https://handballindia.com/" class="logo">HFI</a>
+  	</div>
+  	<!-- End App Logo -->
+
+    <!-- Start Sidebar Show Hide Button -->
+    <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+    <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+    <!-- End Sidebar Show Hide Button -->
+
+    <!-- Start Searchbox -->
+    <form class="searchform">
+      <input type="text" class="searchbox" id="searchbox" placeholder="Search">
+      <span class="searchbutton"><i class="fa fa-search"></i></span>
+    </form>
+    <!-- End Searchbox -->
+
+    <!-- Start Top Menu -->
+    
+    <!-- End Top Menu -->
+
+    <!-- Start Sidepanel Show-Hide Button -->
+    <a href="#sidepanel" class="sidepanel-open-button"><i class="fa fa-outdent"></i></a>
+    <!-- End Sidepanel Show-Hide Button -->
+
+    <!-- Start Top Right -->
+    <ul class="top-right">
+
+    
+
+    <li class="dropdown link">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="{% static 'img/admin/profileimg.png'%}" alt="img"><b>{{  request.user }}</b><span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+          <li role="presentation" class="dropdown-header">Profile</li>          
+          <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
+        </ul>
+    </li>
+
+    </ul>
+    <!-- End Top Right -->
+
+  </div>
+  <!-- END TOP -->
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+
+<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- START SIDEBAR -->
+<div class="sidebar clearfix">
+
+<ul class="sidebar-panel nav">
+  
+      <li><a href="data-table.html">Registered Players Data</a></li>
+      {%  if x %}
+      <li><a href="re">Register New Player</a></li>
+      {%  endif %}
+   
+    </ul>
+  
+  
+
+
+
+
+</div>
+<!-- END SIDEBAR -->
+<!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- START CONTENT -->
+<div class="content">
+
+  <!-- Start Page Header -->
+  <div class="page-header">
+    <h1 class="title">Player Info</h1>
+      <ol class="breadcrumb">
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="#">Tables</a></li>
+        <li class="active">Data Tables</li>
+      </ol>
+
+    <!-- Start Page Header Right Div -->
+    <div class="right">
+      <div class="btn-group" role="group" aria-label="...">
+        <a href="re" class="btn btn-light">Register New Player</a>
+        <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
+        <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>        
+      </div>
+    </div>
+    <!-- End Page Header Right Div -->
+
+  </div>
+  <!-- End Page Header -->
+
+  <!-- Start Presentation -->
+  <div class="row presentation">
+
+    <div class="col-lg-8 col-md-6 titles">
+      <span class="icon color10-bg"><i class="fa fa-table"></i></span>
+      <h1>Registered Player Information</h1>
+      <h4>Search and add new handball players<br> allover the India. </h4>
+    </div>
+
+    
+
+  </div>
+  <!-- End Presentation -->
+
+
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- START CONTAINER -->
+<div class="container-padding">
+
+
+  <!-- Start Row -->
+  <div class="row">
+
+    <!-- Start Panel -->
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-title">
+          Handball Player Data 
+        </div>
+        <div class="panel-body table-responsive">
+
+            <table id="example0" class="table display">
+                <thead>
+                    <tr>
+                        <th>PlayerId</th>
+                        <th>Full Name</th>
+                        <th>Father Name</th>
+                        <th>Address</th>
+                        <th>Age</th>
+                        <th>Photo</th>
+                        <th>Aadhaar Card</th>
+                        <th>Birth </th>
+                        <th> id card </th>
+                    </tr>
+                </thead>
+             
+             
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td>{{  i.playerid }}</td>
+                        <td>{{  i.firstname }} {{ i.lastname}}</td>
+                        <td> {{  i.fathername }} </td>
+                        <td>  {{ i.address  }} </td>
+                        <td>61</td>
+                        {% if i.photo%}
+                        <td><a target="_blank" href="{{ i.photo }}">click here</a></td>
+                       {% else %}
+                       <td>not found</td>
+                       {% endif%}
+                        
+                       {% if i.adhar%}
+                       <td><a  target="_blank" href="{{ i.adhar }}">click here</a></td>
+                      {% else %}
+                      <td>not found</td>
+                      {% endif%}
+                        
+                         
+                      {% if i.birth%}
+                      <td><a target="_blank" href="{{ i.birth }}">click here</a></td>
+                     {% else %}
+                     <td>not found</td>
+                     {% endif%}
+                     <td>
+                       <form action="getid">
+                         <input type = "hidden" name="idd" value="{{ i.playerid }}"/>
+                         <button type="submit">get</button>
+                       </form>
+                     </td>
+                        
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>$320,800</td>
+                    </tr>
+                    <tr>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009/01/12</td>
+                        <td>$86,000</td>
+                    </tr>
+                    <tr>
+                        <td>Cedric Kelly</td>
+                        <td>Senior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>2012/03/29</td>
+                        <td>$433,060</td>
+                    </tr>
+                    <tr>
+                        <td>Airi Satou</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>33</td>
+                        <td>2008/11/28</td>
+                        <td>$162,700</td>
+                    </tr>
+                    <tr>
+                        <td>Brielle Williamson</td>
+                        <td>Integration Specialist</td>
+                        <td>New York</td>
+                        <td>61</td>
+                        <td>2012/12/02</td>
+                        <td>$372,000</td>
+                    </tr>
+                    <tr>
+                        <td>Herrod Chandler</td>
+                        <td>Sales Assistant</td>
+                        <td>San Francisco</td>
+                        <td>59</td>
+                        <td>2012/08/06</td>
+                        <td>$137,500</td>
+                    </tr>
+                    <tr>
+                        <td>Rhona Davidson</td>
+                        <td>Integration Specialist</td>
+                        <td>Tokyo</td>
+                        <td>55</td>
+                        <td>2010/10/14</td>
+                        <td>$327,900</td>
+                    </tr>
+                    <tr>
+                        <td>Colleen Hurst</td>
+                        <td>Javascript Developer</td>
+                        <td>San Francisco</td>
+                        <td>39</td>
+                        <td>2009/09/15</td>
+                        <td>$205,500</td>
+                    </tr>
+                    <tr>
+                        <td>Sonya Frost</td>
+                        <td>Software Engineer</td>
+                        <td>Edinburgh</td>
+                        <td>23</td>
+                        <td>2008/12/13</td>
+                        <td>$103,600</td>
+                    </tr>
+                    <tr>
+                        <td>Jena Gaines</td>
+                        <td>Office Manager</td>
+                        <td>London</td>
+                        <td>30</td>
+                        <td>2008/12/19</td>
+                        <td>$90,560</td>
+                    </tr>
+                    <tr>
+                        <td>Quinn Flynn</td>
+                        <td>Support Lead</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>2013/03/03</td>
+                        <td>$342,000</td>
+                    </tr>
+                    <tr>
+                        <td>Charde Marshall</td>
+                        <td>Regional Director</td>
+                        <td>San Francisco</td>
+                        <td>36</td>
+                        <td>2008/10/16</td>
+                        <td>$470,600</td>
+                    </tr>
+                    <tr>
+                        <td>Haley Kennedy</td>
+                        <td>Senior Marketing Designer</td>
+                        <td>London</td>
+                        <td>43</td>
+                        <td>2012/12/18</td>
+                        <td>$313,500</td>
+                    </tr>
+                    <tr>
+                        <td>Tatyana Fitzpatrick</td>
+                        <td>Regional Director</td>
+                        <td>London</td>
+                        <td>19</td>
+                        <td>2010/03/17</td>
+                        <td>$385,750</td>
+                    </tr>
+                    <tr>
+                        <td>Michael Silva</td>
+                        <td>Marketing Designer</td>
+                        <td>London</td>
+                        <td>66</td>
+                        <td>2012/11/27</td>
+                        <td>$198,500</td>
+                    </tr>
+                    <tr>
+                        <td>Paul Byrd</td>
+                        <td>Chief Financial Officer (CFO)</td>
+                        <td>New York</td>
+                        <td>64</td>
+                        <td>2010/06/09</td>
+                        <td>$725,000</td>
+                    </tr>
+                    <tr>
+                        <td>Gloria Little</td>
+                        <td>Systems Administrator</td>
+                        <td>New York</td>
+                        <td>59</td>
+                        <td>2009/04/10</td>
+                        <td>$237,500</td>
+                    </tr>
+                    <tr>
+                        <td>Bradley Greer</td>
+                        <td>Software Engineer</td>
+                        <td>London</td>
+                        <td>41</td>
+                        <td>2012/10/13</td>
+                        <td>$132,000</td>
+                    </tr>
+                    <tr>
+                        <td>Dai Rios</td>
+                        <td>Personnel Lead</td>
+                        <td>Edinburgh</td>
+                        <td>35</td>
+                        <td>2012/09/26</td>
+                        <td>$217,500</td>
+                    </tr>
+                    <tr>
+                        <td>Jenette Caldwell</td>
+                        <td>Development Lead</td>
+                        <td>New York</td>
+                        <td>30</td>
+                        <td>2011/09/03</td>
+                        <td>$345,000</td>
+                    </tr>
+                    <tr>
+                        <td>Yuri Berry</td>
+                        <td>Chief Marketing Officer (CMO)</td>
+                        <td>New York</td>
+                        <td>40</td>
+                        <td>2009/06/25</td>
+                        <td>$675,000</td>
+                    </tr>
+                    <tr>
+                        <td>Caesar Vance</td>
+                        <td>Pre-Sales Support</td>
+                        <td>New York</td>
+                        <td>21</td>
+                        <td>2011/12/12</td>
+                        <td>$106,450</td>
+                    </tr>
+                    <tr>
+                        <td>Doris Wilder</td>
+                        <td>Sales Assistant</td>
+                        <td>Sidney</td>
+                        <td>23</td>
+                        <td>2010/09/20</td>
+                        <td>$85,600</td>
+                    </tr>
+                    <tr>
+                        <td>Angelica Ramos</td>
+                        <td>Chief Executive Officer (CEO)</td>
+                        <td>London</td>
+                        <td>47</td>
+                        <td>2009/10/09</td>
+                        <td>$1,200,000</td>
+                    </tr>
+                    <tr>
+                        <td>Gavin Joyce</td>
+                        <td>Developer</td>
+                        <td>Edinburgh</td>
+                        <td>42</td>
+                        <td>2010/12/22</td>
+                        <td>$92,575</td>
+                    </tr>
+                    <tr>
+                        <td>Jennifer Chang</td>
+                        <td>Regional Director</td>
+                        <td>Singapore</td>
+                        <td>28</td>
+                        <td>2010/11/14</td>
+                        <td>$357,650</td>
+                    </tr>
+                    <tr>
+                        <td>Brenden Wagner</td>
+                        <td>Software Engineer</td>
+                        <td>San Francisco</td>
+                        <td>28</td>
+                        <td>2011/06/07</td>
+                        <td>$206,850</td>
+                    </tr>
+                    <tr>
+                        <td>Fiona Green</td>
+                        <td>Chief Operating Officer (COO)</td>
+                        <td>San Francisco</td>
+                        <td>48</td>
+                        <td>2010/03/11</td>
+                        <td>$850,000</td>
+                    </tr>
+                    <tr>
+                        <td>Shou Itou</td>
+                        <td>Regional Marketing</td>
+                        <td>Tokyo</td>
+                        <td>20</td>
+                        <td>2011/08/14</td>
+                        <td>$163,000</td>
+                    </tr>
+                    <tr>
+                        <td>Michelle House</td>
+                        <td>Integration Specialist</td>
+                        <td>Sidney</td>
+                        <td>37</td>
+                        <td>2011/06/02</td>
+                        <td>$95,400</td>
+                    </tr>
+                    <tr>
+                        <td>Suki Burks</td>
+                        <td>Developer</td>
+                        <td>London</td>
+                        <td>53</td>
+                        <td>2009/10/22</td>
+                        <td>$114,500</td>
+                    </tr> -->
+                </tbody>
+            </table>
+
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End Panel -->
+
+
+
+
+
+  </div>
+  <!-- End Row -->
+
+
+
+
+
+
+</div>
+<!-- END CONTAINER -->
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+
+<!-- Start Footer -->
+<div class="row footer">
+  <div class="col-md-6 text-left">
+  Copyright © 2015 <a href="https://handballindia.com/">Handball Federation of India</a> All rights reserved.
+  </div>
+  
+</div>
+<!-- End Footer -->
+
+
+</div>
+<!-- End Content -->
+ <!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- START SIDEPANEL -->
+
+<!-- END SIDEPANEL -->
+<!-- //////////////////////////////////////////////////////////////////////////// --> 
+
+
+
+<!-- ================================================
+jQuery Library
+================================================ -->
+<script src="{% static 'js/admin/jquery.min.js'%}"></script>
+
+<!-- ================================================
+Bootstrap Core JavaScript File
+================================================ -->
+<script src="{% static 'js/admin/bootstrap/bootstrap.min.js'%}"></script>
+
+<!-- ================================================
+Plugin.js - Some Specific JS codes for Plugin Settings
+================================================ -->
+<script src="{% static 'js/admin/plugins.js'%}"></script>
+
+<!-- ================================================
+Data Tables
+================================================ -->
+<script src="{% static 'js/admin/datatables/datatables.min.js'%}"></script>
+
+
+
+<script>
+$(document).ready(function() {
+    $('#example0').DataTable();
+} );
+</script>
+
+
+
+
+
+</body>
+</html>

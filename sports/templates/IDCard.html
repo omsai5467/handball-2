@@ -1,0 +1,225 @@
+{%   load static %}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://html2canvas.hertzen.com/build/html2canvas.js"></script>
+ -->
+ <!-- <script src="https://html2canvas.hertzen.com/build/html2canvas.js"></script> -->
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+ 
+
+<style>
+    *
+        {
+            margin:00px;
+            padding: 00px;
+            
+        }
+        .container
+        {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            flex-direction: row;
+
+            
+
+        }
+        .font
+        {
+            
+            height: 375px;
+            width:225px;
+            position: relative;
+            font-family: monospace;
+            border-radius:10px;
+            background-image:url("{% static  'b.png'  %}  ");
+            background-size: 225px 375px;
+            background-repeat: no-repeat;
+        }
+        
+        .companyname{
+            color:White;
+            
+            padding: 10px;
+            font-size:25px;
+        }
+
+        .tab {padding-right:30px;}
+
+        .top img
+        {
+            height: 90px;
+            width:90px;
+            background-color:#D5A02E;
+            border-radius:57px;
+            position: absolute;
+            top: 60px;
+            left: 102px;
+            object-fit: content;
+            border:3px solid rgba(255 , 255 , 255 , .2);
+            
+        }
+        .ename{
+            position: absolute;
+            top: 160px;
+            left: 90px;
+            color:#244BA6;
+            font-size:16px;
+        }
+        .ename1{
+            position: absolute;
+            top: 180px;
+            left: 90px;
+            color:#D5A02E;
+            font-size:14px;
+        }
+        .edetails
+        {
+            position: absolute;
+            top: 212px;
+            text-transform:capitalize;
+            font-size: 11px;
+            text-emphasis: spacing;
+            margin-left: 5px;
+        }
+        .signature{
+            position: absolute;
+            top: 75%;
+            height: 80px;
+            width: 160px;
+        }
+        .signature img{
+
+            height: 40px;
+            width: 100px;
+            margin: 15px 00px 00px 5px;
+            border-radius: 7px;
+          
+        }
+
+
+        .barcode img
+        {
+            height: 65px;
+            width: 65px;
+            text-align: center;
+            margin:5px;
+            
+        }
+        .barcode
+        {
+            text-align: center;
+            position: absolute;
+            top:56%;
+            left: 135px;
+        }
+        
+
+        .qr img
+        {
+            position: absolute;
+            top: 85%;
+            left: 32%;
+            height: 30px;
+            width:120px;
+            margin:20px;
+            background-color:white;
+            
+        }
+        .edetails .Address
+        {
+           
+            width: 60%;
+            text-align: justify;
+        }
+     
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="IDCard.css"> -->
+    <title>ID Card</title>
+   
+</head>
+<body>
+    <style>
+        .btn{
+            position: absolute;
+            top:20%;
+            left: 50%;
+        }
+    </style>
+    <center>
+        <button id="download-png" class="btn">Downlaod</button>
+        </center>
+    <div id  = "container" class="container">
+        <div class="padding">
+        <div class="font">
+            
+            <div class="top">
+                <img src="{{ d.photo.url   }}" alt="">
+            </div>
+            <div class="">
+                <div class="ename">
+                <p class="p1"><b> {{  d.firstname }}  {{   d.lastname }} </b></p>
+                <!-- <p class="p1"><b> FatherName {{ d.fathername  }} </b></p> -->
+                
+                </div>
+                <div class="ename1">
+                <p>Member of HFI</p>
+                </div>
+                <div class="edetails">
+                    <P><b>ID No :</b> {{  d.playerid }}</P>
+                    <P><b>Mobile No :</b> {{   d.phonenumber }}</P>
+                    <p><b>DOB :</b> {{  d.dob  }}</p>
+                    <div class="Address"><b>Address : </b>{{ d.address  }}  {{ d.city  }}   {{  d.state }} </div>
+                    
+                </div>
+
+                
+
+                <div class="barcode">
+                    <img src="{% static 'qr.png'%}" alt="">
+                </div>
+                
+
+          
+            </div>
+        </div>
+    </div>
+       
+    </div>
+</body>
+
+</html>
+
+
+
+
+<script>
+     
+    $('#download-png').click(function(){
+
+html2canvas($('#container'), 
+ {
+    onrendered: function (canvas) {
+    var a = document.createElement('a');
+        a.href = canvas.toDataURL("image/png");       
+        a.download = 'image.png';
+        a.click();
+    }
+ });
+});
+
+</script>

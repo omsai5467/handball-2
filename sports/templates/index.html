@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% load static %}
+<head>
+	<style>
+		.search{
+			width: 300px;
+			height: 35px;
+			color: rgb(15, 171, 233);
+			/* border-radius: 30%; */
+			font-weight: bold;
+			font-size: x-large;
+		}
+	</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Potenza - Job Application Form Wizard with Resume upload and Branch feature">
+    <meta name="author" content="Ansonika">
+    <title>HFI | Handball Federation of India Player Registration Form</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{% static 'img/HFI-Logo_114.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="{% static 'img/apple-touch-icon-57x57-precomposed.png'%}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="{% static 'img/HFI-Logo_72.png'%}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="{% static 'img/HFI-Logo_114.png'%}">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="{% static 'img/HFI-Logo_144.png'%}">
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+	<link href="{% static 'css/menu.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+	<link href="{% static 'css/vendors.css'%}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="{% static 'css/custom.css'%}" rel="stylesheet">
+	
+	<!-- MODERNIZR MENU -->
+	<script src="{% static 'js/modernizr.js' %}"></script>
+
+</head>
+
+<body>
+	
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Preload -->
+	
+	<div id="loader_form">
+		<div data-loader="circle-side-2"></div>
+	</div><!-- /loader_form -->
+	
+	<nav>
+		<ul class="cd-primary-nav">
+			<li><a href="https://www.handballindia.com/" class="animated_link">Handball Home</a></li>
+			<li><a href="https://www.handballindia.com/organisation/" class="animated_link">About Us</a></li>
+			<li><a href="https://www.handballindia.com/indian-handball-team/" class="animated_link">Indian Handball Team</a></li>
+			<li><a href="https://www.handballindia.com/contact-us/" class="animated_link">Contact Us</a></li>
+		</ul>
+	</nav>
+	<!-- /menu -->
+	
+	<div class="container-fluid">
+	    <div class="row row-height">
+	        <div class="col-xl-4 col-lg-4 content-left">
+	            <div class="content-left-wrapper">
+	                <a href="index.html" id="logo"><img src="{% static 'img/HFI-Logo_144.png'%}" alt="" width="45" height="45"></a>
+	                <div id="social">
+	                    <ul>
+	                        <li><a href="#0"><i class="icon-facebook"></i></a></li>
+	                        <li><a href="#0"><i class="icon-twitter"></i></a></li>
+	                        <li><a href="#0"><i class="icon-google"></i></a></li>
+	                        <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+	                    </ul>
+					<form action = "search" method="post">
+						{% csrf_token %}
+						<input type="text"name="player">
+						<button type="submit">Search</button>
+					</form>
+	                </div>
+	                <!-- /social -->
+					
+	                <div>
+	                    <figure><img src="{% static 'img/HFI_Round_LOGO.png'%}" alt="" class="img-fluid" width="270" height="270"></figure>
+	                    <h2>HANDBALL FEDERATION OF INDIA</h2>
+	                    <p>All state wise Registration form for Player</p>
+	                </div>
+	                <div class="copy">© 2022 Handball Federation of India</div>
+	            </div>
+	            <!-- /content-left-wrapper -->
+	        </div>
+	        <!-- /content-left -->
+	        <div class="col-xl-8 col-lg-8 content-right" id="start">
+	            <div id="wizard_container">
+	                <div id="top-wizard">
+	                    <span id="location"></span>
+	                    <div id="progressbar"></div>
+	                </div>
+	                <!-- /top-wizard -->
+					
+	                <form id="wrapped" method="post"  enctype="multipart/form-data" >
+	                    <input id="website" name="website" type="text" value="">
+						{%   csrf_token   %}
+	                    <!-- Leave for security protection, read docs for details -->
+	                    <div id="middle-wizard">
+	                        <div class="step">
+								<br><br><br><br><br>
+							
+	                            <h2 class="section_title">Registration Form    <a href="/logout"> logout</a> </h2>
+	                            <h3 class="main_question">Personal info</h3>
+	                            <div class="form-group add_top_30">
+	                                <label for="firstname">First Name</label>
+	                                <input type="text" name="firstname" id="firstname" class="form-control required" onchange="getVals(this, 'name_field');">
+	                            </div>
+                                <div class="form-group add_top_30">
+	                                <label for="lastname">Last Name</label>
+	                                <input type="text" name="lastname" id="lastname" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
+	                            </div>
+                                <div class="form-group add_top_30">
+	                                <label for="fathername">Father Name</label>
+	                                <input type="text" name="fathername" id="fathername" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="email">Email Address</label>
+	                                <input type="email" name="email" id="email" class="form-control required" onchange="getVals(this, 'email_field');">
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="phone">Phone</label>
+	                                <input type="text" name="phone" id="phone" class="form-control required">
+	                            </div>
+								<label>Gender</label>
+								<div class="form-group radio_input">
+								    <label class="container_radio mr-3">Male
+								        <input type="radio" id = "gender" name="gender" value="Male" class="required">
+								        <span class="checkmark"></span>
+								    </label>
+								    <label class="container_radio">Female
+								        <input type="radio" id = "gender" name="gender" value="Female" class="required">
+								        <span class="checkmark"></span>
+								    </label>
+								</div>
+                                <div class="form-group add_top_30">
+	                                <label for="address">Address Lane 1</label>
+	                                <input type="text" name="address" id="address" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
+	                            </div>
+                                <div class="form-group add_top_30">
+	                                <label for="city">city</label>
+	                                <input type="text" name="city" id="city" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
+	                            </div>
+                                <div class="form-group add_bottom_30">
+	                                    <label>Choose Your State</label>
+	                                    <label for="choose_your_state">Choose Your State</label>
+	                                    <div class="styled-select">
+	                                        <select class="form-control required" id="choose_your_state" name="choose_your_state">
+	                                            <option value="">Choose Your State</option>
+                                                <option value="andaman_ut">Andaman and Nicobar(UT)</option>
+	                                            <option value="andhra_pradesh">Andhra Pradesh</option>
+                                                <option value="arunachal">Arunachal Pradesh</option>
+	                                            <option value="assam">Assam</option>
+                                                <option value="bihar">Bihar</option>
+	                                            <option value="chandigarh_ut">Chandigarh(UT)</option>
+                                                <option value="dadra">Dadra & Nagar Haveli(UT)</option>
+                                                <option value="daman_ut">Daman & Diu(UT)</option>
+                                                <option value="delhi">Delhi</option>
+                                                <option value="goa">Goa</option>
+                                                <option value="gujarat">Gujarat</option>
+                                                <option value="haryana">Haryana</option>
+                                                <option value="himachal">Himachal Pradesh</option>
+                                                <option value="jammu">Jammu & Kashmir</option>
+                                                <option value="jharkhand">Jharkhand</option>
+	                                            <option value="karnataka">Karnataka</option>
+                                                <option value="kerala">Kerala</option>
+                                                <option value="lakshadweep_ut">Lakshadweep(UT)</option>
+                                                <option value="madhya">Madya Pradesh</option>
+                                                <option value="maharashtra">Maharashtra</option>
+                                                <option value="manipur">Manipur</option>
+                                                <option value="meghalaya">Meghalaya</option>
+                                                <option value="mizoram">Mizoram</option>
+                                                <option value="nagaland">Nagaland</option>
+                                                <option value="orissa">Orissa</option>
+                                                <option value="puducherry_ut">Puducherry(UT)</option>
+                                                <option value="punjab">Punjab</option>
+                                                <option value="rajasthan">Rajasthan</option>
+                                                <option value="sikkim">Sikkim</option>
+                                                <option value="tamil">Tamil Nadu</option>                                    
+	                                            <option value="telangana">Telangana</option>
+	                                            <option value="tripura">Tripura</option>
+	                                            <option value="uttar">Uttar Pradesh</option>
+	                                            <option value="uttarakhand">Uttarakhand</option>
+	                                            <option value="west_bengal">West Bengal</option>
+	                                        </select>
+	                                    </div>
+	                                </div>	                           
+	                        </div>
+	                        <!-- /step-->
+
+	                        <!-- /Start Branch ============================== -->
+	                        <div class="submit step" id="end">
+	                            <div class="summary">	                               
+	                            <h2 class="section_title">Required Documents</h2>
+	                            <h3 class="main_question">Please upload required documents</h3>
+                                <div class="form-group add_bottom_30 add_top_20">
+	                                <label>Photo<br><small>(File accepted: .png, .jpg/jpeg - Max file size: 150KB)</small></label>
+	                                <div class="fileupload">
+	                                    <input type="file" id="photo" name="ph" accept="image/png, image/jpeg" class="required">
+	                                </div>
+	                            </div>
+                                <div class="form-group add_bottom_30 add_top_20">
+	                                <label>Aadhaar Card Scaned Copy<br><small>(File accepted: .png, .jpg/jpeg - Max file size: 150KB)</small></label>
+	                                <div class="fileupload">
+	                                    <input type="file" id="Aadhaar" name="adhar" accept="image/png, image/jpeg" class="required">
+	                                </div>
+	                            </div>
+                                <div class="form-group add_bottom_30 add_top_20">
+	                                <label>Birth Certificate Card Scaned Copy<br><small>(File accepted: .png, .jpg/jpeg - Max file size: 150KB)</small></label>
+	                                <div class="fileupload">
+	                                    <input type="file" id="birth" name="bi" accept="image/png, image/jpeg" class="required">
+	                                </div>
+                                </div>
+	                            
+	                            <small>* upload scanned documents. </small>
+                                <div class="text-center">
+	                                    <div class="form-group terms">
+	                                        <label class="container_check">Please accept our <a href="#" data-toggle="modal" data-target="#terms-txt">Terms and conditions</a> before Submit
+	                                            <input type="checkbox" name="terms" value="Yes" class="required">
+	                                            <span class="checkmark"></span>
+	                                        </label>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+
+	                        <!-- /step last-->
+
+	                    </div>
+	                    <!-- /middle-wizard -->
+	                    <div id="bottom-wizard">
+	                        <button type="button" name="backward" class="backward">Prev</button>
+	                        <button type="button" name="forward" class="forward">Next</button>
+	                        <button type="submit" onclick="getDet()" name="S" class="submit">Submit</button>
+	                    </div>
+	                    <!-- /bottom-wizard -->
+	                </form>
+	            </div>
+	            <!-- /Wizard container -->
+	        </div>
+	        <!-- /content-right-->
+	    </div>
+	    <!-- /row-->
+	</div>
+	<!-- /container-fluid -->
+
+	<div class="cd-overlay-nav">
+		<span></span>
+	</div>
+	<!-- /cd-overlay-nav -->
+
+	<div class="cd-overlay-content">
+		<span></span>
+	</div>
+	<!-- /cd-overlay-content -->
+
+	<a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+	<!-- /menu button -->
+	
+	<!-- Modal terms -->
+	<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_1" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<canvas id="canvas"></canvas>
+	<!-- COMMON SCRIPTS -->
+	<input type="hidden" id = "p">
+<input type="hidden" id = "a">
+<input type="hidden" id = "b">
+	<script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
+    <script src="{% static 'js/common_scripts.min.js'%}"></script>
+	<script src="{% static 'js/velocity.min.js'%}"></script>
+	<script src="{% static 'js/common_functions.js'%}"></script>
+	<script src="{% static 'js/file-validator.js'%}"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+	<!-- Wizard script-->
+	<script src="{% static 'js/func_4.js'%}"></script>
+	<script>
+		function getDet(){
+	// 		event.preventDefault()
+	// 		firstname = document.getElementById("firstname").value;
+	// 		lastname  = document.getElementById("lastname").value;
+	// 		fathername = document.getElementById("fathername").value;
+	// 		email = document.getElementById("email").value;
+	// 		phone = document.getElementById("phone").value;
+	// 		gender = document.getElementById("gender").value
+	// 		address = document.getElementById("address").value;
+	// 		//
+	// 		city = document.getElementById("city").value
+	// 		state = document.getElementById("choose_your_state").value;
+			
+			
+	// 		// po()
+	// 		// aa()
+	// 		// bb()
+	// 		profile = document.getElementById("p").value
+	// 		adhar = document.getElementById("a").value
+	// 		bi = document.getElementById("b").value
+	// 		console.log(bi)
+
+	// 		$.ajax(
+    // {
+    //     type:"POST",
+    //     url: "/upload",
+	// 	processData: false,
+    //     contentType: false,
+    //             // mimeType: "multipart/form-data",
+    //     data:{
+    //              firstname: firstname,
+	// 			 lastname:lastname,
+	// 			 fathername:fathername,
+	// 			 email:email,
+	// 			 phone:phone,
+	// 			 gender:gender,
+	// 			 address:address,
+	// 			 city:city,
+	// 			 state:state,
+	// 			 profile: $('#photo').val(),
+	// 			 adhar:$('#Aadhaar').val(),
+	// 			 bi:$('#birth').val(),
+
+
+    //     },
+    //     success: function( data ) 
+    //     {
+	// 		swal(`${data["id"]}`, "Players Genarated Unique Id", "success");
+    //     }
+    //  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+function po(){
+var fileInput = document.getElementById('photo');
+
+var reader = new FileReader();
+reader.readAsDataURL(fileInput.files[0]);
+
+reader.onload = function () {
+	
+	document.getElementById("p").value = reader.result
+};
+reader.onerror = function (error) {
+	console.log('Error: ', error);
+};
+
+
+		}
+
+
+		function aa(){
+var fileInput = document.getElementById('Aadhaar');
+
+var reader = new FileReader();
+reader.readAsDataURL(fileInput.files[0]);
+
+reader.onload = function () {
+	
+	document.getElementById("a").value = reader.result
+};
+reader.onerror = function (error) {
+	console.log('Error: ', error);
+};
+
+
+		}
+		function bb(){
+var fileInput = document.getElementById('birth');
+
+var reader = new FileReader();
+reader.readAsDataURL(fileInput.files[0]);
+
+reader.onload = function () {
+	
+	document.getElementById("b").value = reader.result
+};
+reader.onerror = function (error) {
+	console.log('Error: ', error);
+};
+
+
+		}
+
+	</script>
+
+
+
+</body>
+</html>
+
+
