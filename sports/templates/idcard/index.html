@@ -9,7 +9,7 @@
 
 
 
-  <!-- new html ....... --> 
+  <!-- new html ....... -->
 
 
 
@@ -17,8 +17,10 @@
 <html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HFI | Handball Federation of India Player ID Card</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="PRO Card - Material Resume / CV / vCard Template" />
     <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, Material CV, portfolio" />
@@ -65,7 +67,7 @@
               </li>
               <li>
                 <a class="pt-trigger" href="/logout" data-animation="62">Logout</a>
-              </li>            
+              </li>
             </ul>
             <!-- /Main menu -->
           </div>
@@ -98,78 +100,80 @@
               <div class="section-inner start-page-content">
                 <div class="page-header">
                   <div class="row">
-                    
-                      <div class="photo">
-                        <img style="   width: 500px ; height: 200px "    class="omsai"   src="{{    d.photo.url  }}" alt="">
-                      </div>
-                    
 
-                    
+                      <div style="position :relative; left: 8%;" class="photo">
+                        <img style="   width: 500px ; height: 200px ;  "    class="omsai"   src="{{    d.photo.url  }}" alt="">
+                      </div>
+
+
+
                   </div>
                 </div>
 
                 <div class="page-content">
                   <div class="row">
-                      
-                      
-                       <div class="col-sm-6 col-md-6 col-lg-6">
-                      
-                      
-                    <br>
-                        <div class="block-title">
-                          <h3>{{    d.firstname   }}   {{   d.lastname  }}</span></h3>
-                        </div>
-                      
-                    
 
-                    
+
+                       <div class="col-sm-6 col-md-6 col-lg-6">
+
+
+                    <!-- <br> -->
+                        <div class="block-title">
+                          <h1 style="font-family: 'Poppins';font-size:35px; font-weight:bold;text-transform:uppercase;textwrap:no-wrap;color : blue; white-space: nowrap; ">   <strong>{{    d.firstname   }} {{   d.lastname  }}</strong></h1>
+                        </div>
+
+<br>
+
+
                     <div class="col-sm-6 col-md-6 col-lg-6">
                       <ul class="info-list">
-                        <li><span class="title"><b>Player ID:</b></span><span class="value">{{     d.playerid    }}</span></li>
-                        <li><span class="title"><b>State</b></span><span class="value">{{   d.state }}</span></li>
-                        
-                        
+                      <li><span  class="title"><b>Player ID:</b></span><span style="color:blue;font-size:20px;text-align: center" class="value">{{     d.playerid    }}</span></li>
+                      <li><span style = "font-family: 'Poppins';-align: center" class="title"><b>State</b></span><span style="font-family: 'Poppins';  position:relative;  left:10%; color:blue;font-size:20px;text-transform:uppercase;  text-align:center  ">{{   d.state }}</span></li>
+
+
                       </ul>
+                       <br><br>
                       <div class="logo">
-                        
-                        <img src="{% static 'images/id2/HFI-Logoid.png'%}" alt="">
+
+                        <img style="" src="{% static 'images/id2/HFI-Logoid.png'%}" alt="">
                       </div>
+
                         <div class="qr">
-                        
-                 
+
+
                   <div class = "qrcode" id = "qrcode"></div>
                       </div>
                     </div>
 
                   </div>
-                </div>                  
+                </div>
               </div>
                 </div>
                 </div>
             </div>
-                
-                 
-                        
+
+
+
             </section>
-                
-                 
+
+
             <!-- End of Home Subpage -->
             <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                      
+
                         <div class="center download-resume">
                           <a onclick="window.print()" class="btn btn-secondary">Print Id Card</a>
                         </div>
-                     
+
                     </div>
-                
+
             </div>
 
-        
+
         <!-- /Page changer wrapper -->
-      
+
       <!-- /Main Content -->
-           
+
     <footer>
       <div class="copyrights"><p>© 2022 All rights reserved. Handball Federation of India</p></div>
     </footer>
@@ -203,7 +207,7 @@
           onrendered: function(canvas) {
               var img = canvas.toDataURL();
               window.open(img);
-  
+
               var blob = new Blob(img, {type: "image/jpeg"});
               var filesaver = saveAs(blob, "my image.png");
         }
@@ -220,7 +224,7 @@
 <script type="text/javascript">
 
   const qrcode = document.getElementById("qrcode");
-  const textInput ="http://localhost:8000/getid?idd={{ d.playerid    }}"
+  const textInput ="http://3.111.201.89/getid?idd={{ d.playerid    }}"
 
 const qr = new QRCode(qrcode);
 qr.makeCode(textInput);
@@ -230,16 +234,16 @@ qr.makeCode(textInput);
 // };
 
   </script>
-  
+
 
 
   <style>
     .qrcode{
       position: absolute;
-      left:150px;
-      top: 60px;
-      height: 70px;
-      width: 90px;
+      left:200px;
+      top: 80px;
+      height: 60px;
+      width: 60px;
     }
   </style>
 
@@ -248,7 +252,7 @@ qr.makeCode(textInput);
 
 
 <style type="text/css">
-  
+
 .omsai{
   height: 550px;
   width: 500px;
