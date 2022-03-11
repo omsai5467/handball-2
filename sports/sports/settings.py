@@ -123,6 +123,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -140,7 +141,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 AWS_ACCESS_KEY_ID = 'AKIATWMRM3WCFL7R5FM5'
 AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'omsai'
-AWS_S3_FILE_OVERWRITE = False
+AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

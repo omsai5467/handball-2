@@ -24,5 +24,7 @@ urlpatterns = [
    path("phpmailer/idcard",views.genarateIdcard),
    path('logout',views.log),
    path("all",views.all),
-   path("getid",views.getid)
+   path("getid",views.getid),
+   path("geti",views.geti),
+   path("del",views.delete)
 ]

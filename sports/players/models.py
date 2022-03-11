@@ -17,6 +17,7 @@ class playerdata(models.Model):
     phonenumber=models.CharField(max_length=12)
     Email=models.CharField(max_length=200)
     gender=models.CharField(max_length=20)
+    age = models.IntegerField()
     city=models.CharField(max_length=200)
     state=models.CharField(max_length=200)
     photo = models.ImageField(upload_to = "profile/", null=True, blank=True)
@@ -50,6 +51,3 @@ class playerdata(models.Model):
 #     isplayer = models.BooleanField(default=False)
 
 # admin.site.register(play)
-
-
-    

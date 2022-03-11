@@ -37,22 +37,22 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{% static 'css/custom.css'%}" rel="stylesheet">
-	
+
 	<!-- MODERNIZR MENU -->
 	<script src="{% static 'js/modernizr.js' %}"></script>
 
 </head>
 
 <body>
-	
+
 	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div><!-- /Preload -->
-	
+
 	<div id="loader_form">
 		<div data-loader="circle-side-2"></div>
 	</div><!-- /loader_form -->
-	
+
 	<nav>
 		<ul class="cd-primary-nav">
 			<li><a href="https://www.handballindia.com/" class="animated_link">Handball Home</a></li>
@@ -62,7 +62,7 @@
 		</ul>
 	</nav>
 	<!-- /menu -->
-	
+
 	<div class="container-fluid">
 	    <div class="row row-height">
 	        <div class="col-xl-4 col-lg-4 content-left">
@@ -82,7 +82,7 @@
 					</form>
 	                </div>
 	                <!-- /social -->
-					
+
 	                <div>
 	                    <figure><img src="{% static 'img/HFI_Round_LOGO.png'%}" alt="" class="img-fluid" width="270" height="270"></figure>
 	                    <h2>HANDBALL FEDERATION OF INDIA</h2>
@@ -100,7 +100,7 @@
 	                    <div id="progressbar"></div>
 	                </div>
 	                <!-- /top-wizard -->
-					
+
 	                <form id="wrapped" method="post"  enctype="multipart/form-data" >
 	                    <input id="website" name="website" type="text" value="">
 						{%   csrf_token   %}
@@ -108,7 +108,7 @@
 	                    <div id="middle-wizard">
 	                        <div class="step">
 								<br><br><br><br><br>
-							
+
 	                            <h2 class="section_title">Registration Form    <a href="/logout"> logout</a> </h2>
 	                            <h3 class="main_question">Personal info</h3>
 	                            <div class="form-group add_top_30">
@@ -150,56 +150,60 @@
 	                                <label for="city">city</label>
 	                                <input type="text" name="city" id="city" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
 	                            </div>
+															<div class="form-group add_top_30">
+																<label for="age">age</label>
+																<input  type="text" name="age" id="age" class="form-control required" width="50px" onchange="getVals(this, 'name_field');">
+														</div>
                                 <div class="form-group add_bottom_30">
 	                                    <label>Choose Your State</label>
 	                                    <label for="choose_your_state">Choose Your State</label>
 	                                    <div class="styled-select">
 	                                        <select class="form-control required" id="choose_your_state" name="choose_your_state">
 	                                            <option value="">Choose Your State</option>
-                                                <option value="andaman_ut">Andaman and Nicobar(UT)</option>
-	                                            <option value="andhra_pradesh">Andhra Pradesh</option>
-                                                <option value="arunachal">Arunachal Pradesh</option>
-	                                            <option value="assam">Assam</option>
-                                                <option value="bihar">Bihar</option>
-	                                            <option value="chandigarh_ut">Chandigarh(UT)</option>
-                                                <option value="dadra">Dadra & Nagar Haveli(UT)</option>
-                                                <option value="daman_ut">Daman & Diu(UT)</option>
-                                                <option value="delhi">Delhi</option>
-                                                <option value="goa">Goa</option>
-                                                <option value="gujarat">Gujarat</option>
-                                                <option value="haryana">Haryana</option>
-                                                <option value="himachal">Himachal Pradesh</option>
-                                                <option value="jammu">Jammu & Kashmir</option>
-                                                <option value="jharkhand">Jharkhand</option>
-	                                            <option value="karnataka">Karnataka</option>
-                                                <option value="kerala">Kerala</option>
-                                                <option value="lakshadweep_ut">Lakshadweep(UT)</option>
-                                                <option value="madhya">Madya Pradesh</option>
-                                                <option value="maharashtra">Maharashtra</option>
-                                                <option value="manipur">Manipur</option>
-                                                <option value="meghalaya">Meghalaya</option>
-                                                <option value="mizoram">Mizoram</option>
-                                                <option value="nagaland">Nagaland</option>
-                                                <option value="orissa">Orissa</option>
-                                                <option value="puducherry_ut">Puducherry(UT)</option>
-                                                <option value="punjab">Punjab</option>
-                                                <option value="rajasthan">Rajasthan</option>
-                                                <option value="sikkim">Sikkim</option>
-                                                <option value="tamil">Tamil Nadu</option>                                    
-	                                            <option value="telangana">Telangana</option>
-	                                            <option value="tripura">Tripura</option>
-	                                            <option value="uttar">Uttar Pradesh</option>
-	                                            <option value="uttarakhand">Uttarakhand</option>
-	                                            <option value="west_bengal">West Bengal</option>
+                                                <option value="andaman_ut(AN)">Andaman and Nicobar(UT)</option>
+	                                            <option value="andhra_pradesh(AP)">Andhra Pradesh</option>
+                                                <option value="arunachalPradesh(AR)">Arunachal Pradesh</option>
+	                                            <option value="assam(AS)">Assam</option>
+                                                <option value="bihar(BR)">Bihar(BR)</option>
+	                                            <option value="chandigarh_ut(CH)">Chandigarh(UT)</option>
+                                                <option value="dadra(DD)">Dadra & Nagar Haveli(UT) Daman & Diu(UT)</option>
+                                                <!-- <option value="daman_ut(DD)">Daman & Diu(UT)</option> -->
+                                                <option value="delhi(DL)">Delhi</option>
+                                                <option value="goa(GA)">Goa</option>
+                                                <option value="gujarat(GJ)">Gujarat</option>
+                                                <option value="haryana(HR)">Haryana</option>
+                                                <option value="himachal(HP)">Himachal Pradesh</option>
+                                                <option value="jammu(JK)">Jammu & Kashmir</option>
+                                                <option value="jharkhand(JH)">Jharkhand</option>
+	                                            <option value="karnataka(KA)">Karnataka</option>
+                                                <option value="kerala(KL)">Kerala</option>
+                                                <option value="lakshadweep_ut(LD)">Lakshadweep(UT)</option>
+                                                <option value="madhya(MP)">Madya Pradesh</option>
+                                                <option value="maharashtra(MH)">Maharashtra</option>
+                                                <option value="manipur(MN)">Manipur</option>
+                                                <option value="meghalaya(ML)">Meghalaya</option>
+                                                <option value="mizoram(MZ)">Mizoram</option>
+                                                <option value="nagaland(NL)">Nagaland</option>
+                                                <option value="orissa(OD)">Orissa</option>
+                                                <option value="puducherry_ut(PY)">Puducherry(UT)</option>
+                                                <option value="punjab(PB)">Punjab</option>
+                                                <option value="rajasthan(RJ)">Rajasthan</option>
+                                                <option value="sikkim(SK)">Sikkim</option>
+                                                <option value="tamilNadu(TN)">Tamil Nadu</option>
+	                                            <option value="telangana(TS)">Telangana</option>
+	                                            <option value="tripura(TR)">Tripura</option>
+	                                            <option value="uttar(UP)">Uttar Pradesh</option>
+	                                            <option value="uttarakhand(UK)">Uttarakhand</option>
+	                                            <option value="west_bengal(WB)">West Bengal</option>
 	                                        </select>
 	                                    </div>
-	                                </div>	                           
+	                                </div>
 	                        </div>
 	                        <!-- /step-->
 
 	                        <!-- /Start Branch ============================== -->
 	                        <div class="submit step" id="end">
-	                            <div class="summary">	                               
+	                            <div class="summary">
 	                            <h2 class="section_title">Required Documents</h2>
 	                            <h3 class="main_question">Please upload required documents</h3>
                                 <div class="form-group add_bottom_30 add_top_20">
@@ -220,7 +224,7 @@
 	                                    <input type="file" id="birth" name="bi" accept="image/png, image/jpeg" class="required">
 	                                </div>
                                 </div>
-	                            
+
 	                            <small>* upload scanned documents. </small>
                                 <div class="text-center">
 	                                    <div class="form-group terms">
@@ -265,7 +269,7 @@
 
 	<a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
 	<!-- /menu button -->
-	
+
 	<!-- Modal terms -->
 	<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
@@ -314,8 +318,8 @@
 	// 		//
 	// 		city = document.getElementById("city").value
 	// 		state = document.getElementById("choose_your_state").value;
-			
-			
+
+
 	// 		// po()
 	// 		// aa()
 	// 		// bb()
@@ -347,7 +351,7 @@
 
 
     //     },
-    //     success: function( data ) 
+    //     success: function( data )
     //     {
 	// 		swal(`${data["id"]}`, "Players Genarated Unique Id", "success");
     //     }
@@ -431,7 +435,7 @@ var reader = new FileReader();
 reader.readAsDataURL(fileInput.files[0]);
 
 reader.onload = function () {
-	
+
 	document.getElementById("p").value = reader.result
 };
 reader.onerror = function (error) {
@@ -449,7 +453,7 @@ var reader = new FileReader();
 reader.readAsDataURL(fileInput.files[0]);
 
 reader.onload = function () {
-	
+
 	document.getElementById("a").value = reader.result
 };
 reader.onerror = function (error) {
@@ -465,7 +469,7 @@ var reader = new FileReader();
 reader.readAsDataURL(fileInput.files[0]);
 
 reader.onload = function () {
-	
+
 	document.getElementById("b").value = reader.result
 };
 reader.onerror = function (error) {
@@ -481,5 +485,3 @@ reader.onerror = function (error) {
 
 </body>
 </html>
-
-

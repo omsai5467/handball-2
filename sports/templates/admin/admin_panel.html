@@ -21,7 +21,7 @@
   <!-- Start Page Loading -->
   <div class="loading"><img src="{% static 'img/admin/loading.gif'%}" alt="loading-img"></div>
   <!-- End Page Loading -->
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
   <!-- START TOP -->
   <div id="top" class="clearfix">
 
@@ -44,7 +44,7 @@
     <!-- End Searchbox -->
 
     <!-- Start Top Menu -->
-    
+
     <!-- End Top Menu -->
 
     <!-- Start Sidepanel Show-Hide Button -->
@@ -54,12 +54,12 @@
     <!-- Start Top Right -->
     <ul class="top-right">
 
-    
+
 
     <li class="dropdown link">
       <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="{% static 'img/admin/profileimg.png'%}" alt="img"><b>{{  request.user }}</b><span class="caret"></span></a>
         <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
-          <li role="presentation" class="dropdown-header">Profile</li>          
+          <li role="presentation" class="dropdown-header">Profile</li>
           <li><a href="/logout"><i class="fa falist fa-power-off"></i> Logout</a></li>
         </ul>
     </li>
@@ -69,32 +69,32 @@
 
   </div>
   <!-- END TOP -->
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
 
 
-<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START SIDEBAR -->
 <div class="sidebar clearfix">
 
 <ul class="sidebar-panel nav">
-  
+
       <li><a href="data-table.html">Registered Players Data</a></li>
       {%  if x %}
       <li><a href="re">Register New Player</a></li>
       {%  endif %}
-   
+
     </ul>
-  
-  
+
+
 
 
 
 
 </div>
 <!-- END SIDEBAR -->
-<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- //////////////////////////////////////////////////////////////////////////// -->
 
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
 <div class="content">
 
@@ -112,7 +112,7 @@
       <div class="btn-group" role="group" aria-label="...">
         <a href="re" class="btn btn-light">Register New Player</a>
         <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
-        <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>        
+        <a href="#" class="btn btn-light"><i class="fa fa-search"></i></a>
       </div>
     </div>
     <!-- End Page Header Right Div -->
@@ -121,21 +121,92 @@
   <!-- End Page Header -->
 
   <!-- Start Presentation -->
+
   <div class="row presentation">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <div class="col-lg-8 col-md-6 titles">
+        {%  if x == False %}
       <span class="icon color10-bg"><i class="fa fa-table"></i></span>
       <h1>Registered Player Information</h1>
       <h4>Search and add new handball players<br> allover the India. </h4>
     </div>
+    {% endif %}
+      {% if x  %}
+      <h1 style="text-align:center;color:blue" ><strong   >Total No of players {{ count  }}</strong></h1>
+      <canvas id="myChart" style="width:14cm"></canvas>
 
-    
+      <script>
+      var xValues = [
+        "Andhra Pradesh",
+        "Andaman and nicobar",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Dadra and Nagar haveli and daman and diu",
+        "Delhi",
+        "Goa",
+        "Gujarat",
+        "Himachal Pradesh",
+        "Haryana",
+        "Jarkhand",
+        "Jammu And Kashmir",
+        "Karnataka",
+        "chandigarh_ut",
+        "kerala",
+        "Ladakh",
+        "Lakshadweep",
+        "Maharashtra",
+        "Meghalaya",
+        "manipur",
+        "Madhya Pradesh",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Puducherry",
+        "Rajasthan",
+        "Sikkim",
+        "tamilNadu",
+        "Tripura",
+        "Telangana",
+        "Uttarakhand",
+        "Uttar Pradesh",
+        "West Bengal"
+      ];
+      var yValues = [{{ z.ap  }},{{ z.an }},{{ z.ar}},{{ z.as }},{{ z.br }},{{ z.ch }},{{ z.dd }},{{ z.dl }},{{ z.ga }},{{ z.gj }},{{ z.hr }},{{ z.hp }},{{ z.jk }},{{ z.jh }},{{ z.ka }},{{ z.kl }},{{ z.ld }},{{ z.mp }},{{ z.mh }},{{ z.mn }},{{ z.ml }},{{ z.mz }},{{ z.nl }},{{ z.od }},{{ z.py }},{{ z.pb }},{{ z.rj }},{{ z.sk }},{{ z.tn }},{{ z.ts }},{{ z.tr }},{{ z.up }},{{ z.uk }},{{ z.wb }}]
+      var barColors = ["red", "green","blue","orange","brown","red", "green","blue","orange","brown","red", "green","blue","orange","brown","red", "green","blue","orange","brown","red", "green","blue","orange","brown","red", "green","blue","orange","brown"];
+
+      new Chart("myChart", {
+        type: "bar",
+        data: {
+          labels: xValues,
+          datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            fullSize : true,
+            text: "State Players Information"
+          }
+
+
+        }
+      });
+      </script>
 
   </div>
+  {%  endif %}
   <!-- End Presentation -->
 
 
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTAINER -->
 <div class="container-padding">
 
@@ -147,7 +218,7 @@
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-title">
-          Handball Player Data 
+          Handball Player Data
         </div>
         <div class="panel-body table-responsive">
 
@@ -163,10 +234,14 @@
                         <th>Aadhaar Card</th>
                         <th>Birth </th>
                         <th> id card </th>
+                        {% if x %}
+                        <th>delete</th>
+                        {%  endif %}
+
                     </tr>
                 </thead>
-             
-             
+
+
                 <tbody>
                     {% for i in data %}
                     <tr>
@@ -174,22 +249,22 @@
                         <td>{{  i.firstname }} {{ i.lastname}}</td>
                         <td> {{  i.fathername }} </td>
                         <td>  {{ i.address  }} </td>
-                        <td>61</td>
+                        <td>{{   i.age }}</td>
                         {% if i.photo%}
-                        <td><a target="_blank" href="{{ i.photo }}">click here</a></td>
+                        <td><a target="_blank" href="{{ i.photo.url }}">click here</a></td>
                        {% else %}
                        <td>not found</td>
                        {% endif%}
-                        
+
                        {% if i.adhar%}
-                       <td><a  target="_blank" href="{{ i.adhar }}">click here</a></td>
+                       <td><a  target="_blank" href="{{ i.adhar.url }}">click here</a></td>
                       {% else %}
                       <td>not found</td>
                       {% endif%}
-                        
-                         
+
+
                       {% if i.birth%}
-                      <td><a target="_blank" href="{{ i.birth }}">click here</a></td>
+                      <td><a target="_blank" href="{{ i.birth.url }}">click here</a></td>
                      {% else %}
                      <td>not found</td>
                      {% endif%}
@@ -199,7 +274,14 @@
                          <button type="submit">get</button>
                        </form>
                      </td>
-                        
+                     {%  if x  %}
+                     <td>
+                       <form action="del">
+                         <input type = "hidden" name="idd" value="{{ i.id }}"/>
+                         <button    onclick="return confirm('Are you sures')" type="submit">Delete</button>
+                       </form>
+                     </td>
+                     {%  endif %}
                     </tr>
                     {% endfor %}
                     <!-- <tr>
@@ -474,7 +556,7 @@
 
 </div>
 <!-- END CONTAINER -->
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
 
 
 <!-- Start Footer -->
@@ -482,20 +564,20 @@
   <div class="col-md-6 text-left">
   Copyright © 2015 <a href="https://handballindia.com/">Handball Federation of India</a> All rights reserved.
   </div>
-  
+
 </div>
 <!-- End Footer -->
 
 
 </div>
 <!-- End Content -->
- <!-- //////////////////////////////////////////////////////////////////////////// --> 
+ <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START SIDEPANEL -->
 
 <!-- END SIDEPANEL -->
-<!-- //////////////////////////////////////////////////////////////////////////// --> 
+<!-- //////////////////////////////////////////////////////////////////////////// -->
 
 
 
