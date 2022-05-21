@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "players",
-    "storages"
+    "storages",
+    "apiview"
 ]
 # AUTH_USER_MODEL = 'players.play'
 

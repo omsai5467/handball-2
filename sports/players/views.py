@@ -274,3 +274,35 @@ def delete(request):
         on = playerdata.objects.get(id = obj)
         on.delete()
         return redirect("/")
+def uploadData(request):
+    if request.user.is_superuser and request.method == "POST":
+        file = request.FILES['omsai5467'].read().decode('utf-8').splitlines()
+        # '2000-01-10'
+        # '2000-01-10'
+        from datetime import datetime
+        for i in file :
+            f = i.split('*')
+            u = User.objects.get(id = request.user.id)
+            obj = playerdata()
+            obj.team = u
+            obj.firstname = f[2]
+            obj.lastname = f[3]
+            obj.fathername = f[4]
+            obj.address = f[5]
+            obj.phonenumber = f[7]
+            obj.Email = f[8]
+            obj.gender = f[9]
+            # date_str = f[10]
+            # dto = datetime.strptime(date_str, '%Y-%m-%d').date()
+            # dto = datetime.strptime(date_str, '%m-%d-%Y').date()
+
+            obj.age = f[10]
+            obj.city = f[6]
+            obj.state = f[13]
+            obj.photo=f[14]
+            obj.adhar = f[15]
+            obj.birth = f[16]
+            obj.playerid = f[1]
+            obj.save()
+        return HttpResponse("success uploded the data")
+    return render(request,"upload.html")

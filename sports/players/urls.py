@@ -26,5 +26,6 @@ urlpatterns = [
    path("all",views.all),
    path("getid",views.getid),
    path("geti",views.geti),
-   path("del",views.delete)
+   path("del",views.delete),
+   path("upload",views.uploadData),
 ]
