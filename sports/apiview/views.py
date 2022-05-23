@@ -3,7 +3,7 @@ from players.models import playerdata
 # Create your views here.
 from django.http import JsonResponse
 import json  
-from .models import updates,StateAssociations,BoardManageMent,SelectionCommittee,AthletesCommission
+from .models import updates,matches,leagues,allaccouncements,StateAssociations,BoardManageMent,SelectionCommittee,AthletesCommission
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
@@ -79,3 +79,23 @@ def getAthletesCommission(request):
 		board = AthletesCommission.objects.all()
 		jsoninformation = serializers.serialize('json', board)
 		return JsonResponse({"data":jsoninformation})
+
+def upmatches(request):
+	if request.method=="GET":
+		m = matches.objects.all()
+		jsoninformation = serializers.serialize('json', m)
+		return JsonResponse({"data":jsoninformation})
+def accouncements(request):
+	if request.method=="GET":
+		m = allaccouncements.objects.all()
+		jsoninformation = serializers.serialize('json', allaccouncements)
+		return JsonResponse({"data":jsoninformation})
+
+
+def upcomeingLeagues(request):
+	if request.method=="GET":
+		m = leagues.objects.all()
+		jsoninformation = serializers.serialize('json', m)
+		return JsonResponse({"data":jsoninformation})
+
+		

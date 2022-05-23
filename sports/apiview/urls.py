@@ -35,8 +35,10 @@ urlpatterns = [
     path("StateViseAssociations/<str:state>/",views.StateViseAssociations),
     path("getAllBoardMembers",views.getAllBoardMembers),
     path("getAllSelectionCommittee",views.getAllSelectionCommittee),
-    path("getAthletesCommission",views.getAthletesCommission)
-    
+    path("getAthletesCommission",views.getAthletesCommission),
+    path("upcomeingMatches",views.upmatches),
+    path("accouncements",views.accouncements),
+    path("upcomeingLeagues",views.upcomeingLeagues)
 
 
 ]

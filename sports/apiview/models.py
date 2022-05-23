@@ -96,3 +96,21 @@ class AthletesCommission(models.Model):
 	# dateofbirth=models.CharField()
 	def __str__(self):
 		return self.name
+class matches(models.Model):
+	MatchName=models.CharField(max_length=100,blank=True)
+	StadiumName=models.CharField(max_length=100,blank=True)
+	MatchDate = models.CharField(max_length=100,blank=True)
+	team1 = models.CharField(max_length=100,blank=True)
+	team2 = models.CharField(max_length=100,blank=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	def __str__(self):
+		return f"{self.team1} VS {self.team2}"
+
+class allaccouncements(models.Model):
+	name = models.CharField(max_length=500)
+
+class leagues(models.Model):
+	photo = models.ImageField(upload_to="leagues/")
+	leagueName = models.CharField(max_length=100)
+	fromStartDateToEndDate = models.CharField(max_length=100)
+	aboutLeague = models.TextField()
