@@ -16,19 +16,27 @@ Including another URLconf
 # from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path,include
-from . import views
+from apiview  import views
 from django.conf.urls.static import static
 from django.conf import settings
 # from django.conf.urls import url, include
 # from django.urls import re_path as r
 # from django.conf.urls import url
+
 from django.urls import path, re_path
 urlpatterns = [
    
    
     
     path("getPlayers",views.getPlayers,name="getplayers"), # get all players informations
-    path('getP/<str:play>/',views.getPlayer) # get player information of each one 
+    path('getP/<str:play>/',views.getPlayer) ,# get player information of each one 
+    path('latestUpdates',views.latestUpdates),
+    path("StateAssociationsAll",views.StateAssociationsAll),
+    path("StateViseAssociations/<str:state>/",views.StateViseAssociations),
+    path("getAllBoardMembers",views.getAllBoardMembers),
+    path("getAllSelectionCommittee",views.getAllSelectionCommittee),
+    path("getAthletesCommission",views.getAthletesCommission)
+    
 
 
 ]

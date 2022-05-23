@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "players",
     "storages",
-    "apiview"
+    "apiview",
+    
 ]
 # AUTH_USER_MODEL = 'players.play'
 
