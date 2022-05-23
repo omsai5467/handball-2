@@ -40,7 +40,13 @@ states = (
 ("Tripura","Tripura"),
 ("Uttarakhand","Uttarakhand"),
 ("UttarPradesh","UttarPradesh"), 
-("WestBengal","WestBengal")
+("WestBengal","WestBengal"),
+("AndamanAndNicobarIslands","AndamanAndNicobarIslands"),
+("DaraAndNagar_HaveliAndDamanAndDiu","DaraAndNagar_HaveliAndDamanAndDiu"),
+("lakshadweep","lakshadweep"),
+("Delhi","Delhi"),
+("ladakh","ladakh"),
+("jammu_kashmir","jammu_kashmir")
 )
 
 class StateAssociations(models.Model):
