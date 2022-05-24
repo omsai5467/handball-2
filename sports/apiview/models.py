@@ -108,9 +108,14 @@ class matches(models.Model):
 
 class allaccouncements(models.Model):
 	name = models.CharField(max_length=500)
+	def __str__(Self):
+		return self.name
 
 class leagues(models.Model):
 	photo = models.ImageField(upload_to="leagues/")
 	leagueName = models.CharField(max_length=100)
 	fromStartDateToEndDate = models.CharField(max_length=100)
 	aboutLeague = models.TextField()
+	def __str__(self):
+		return self.leagueName
+
