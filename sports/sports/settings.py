@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "players",
     "storages",
     "apiview",
+    "smuggler"
     
 ]
 # AUTH_USER_MODEL = 'players.play'

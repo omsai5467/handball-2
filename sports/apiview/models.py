@@ -12,7 +12,6 @@ class updates(models.Model):
 		# omsai5467
 
 
-
 states = (
 ("AndhraPradesh","AndhraPradesh"),
 ("ArunachalPradesh","ArunachalPradesh"),
@@ -109,7 +108,7 @@ class matches(models.Model):
 
 class allaccouncements(models.Model):
 	name = models.CharField(max_length=500)
-	def __str__(Self):
+	def __str__(self):
 		return self.name
 
 class leagues(models.Model):
