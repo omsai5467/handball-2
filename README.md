@@ -1,4 +1,4 @@
-<img src="http://www.handballindia.in/images/logo/logo2.jpg"/           width=100px  img>
+<img src="http://www.handballindia.in/images/logo/logo2.jpg"          width=100px  /img>
 <h1>HANDBALL INDIA SPORTS</h1>
 
 
