@@ -57,9 +57,9 @@ def latestUpdates(request):
 		# jsoninformation = serializers.serialize('json', up)
 		jsoninformation = serializers.serialize('python', up)
 		actual_data = [d['fields'] for d in jsoninformation]
-		actual_data["result"] = f"{len(actual_data)}"
+		actual_data.insert(0,{"result":len(actual_data)})## = f"{len(actual_data)}"
 
-		actual_data["msg"] = "Data Found"
+		actual_data.insert(0,{"msg":"data found"}) 
 		# actual_data["result"] = f"{len(actual_data)}"
 
 		# actual_data = [d['fields'] for d in jsoninformation]
