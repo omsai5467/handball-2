@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "smuggler",
     "api",
     'rest_framework',
+    "corsheaders"
     
 ]
 # AUTH_USER_MODEL = 'players.play'
@@ -56,6 +57,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'sports.urls'
@@ -135,7 +138,7 @@ STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/images/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
+CORS_ORIGIN_ALLOW_ALL=True
 
 
 
@@ -143,14 +146,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 #S3 BUCKETS CONFIG
 
-AWS_ACCESS_KEY_ID = 'AKIATWMRM3WCFL7R5FM5'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'omsai'
-AWS_S3_FILE_OVERWRITE = True
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = 'AKIATWMRM3WCFL7R5FM5'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'omsai'
+# AWS_S3_FILE_OVERWRITE = True
+# AWS_DEFAULT_ACL = None
+# AWS_QUERYSTRING_AUTH = False
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 

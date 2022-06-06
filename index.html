@@ -1,0 +1,27 @@
+
+
+
+
+
+
+<script>
+	
+async function GetImage(){
+       const response = await fetch('http://127.0.0.1:8000/api/getPlayers',
+       {
+
+
+       	method: 'POST', // or 'PUT'
+  		headers: {
+    		'Content-Type': 'application/json',
+  			},
+  		body:JSON.stringify({"start":1,"end":200}),
+
+
+       })
+       const blob = await response.json();;
+       console.log(blob)
+      
+       }
+GetImage()
+</script>

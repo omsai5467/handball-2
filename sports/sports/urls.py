@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', include('smuggler.urls')),  
     path('admin/', admin.site.urls),
     path('',include('players.urls')),
-    path('handballapi/',include('api.urls')),
+    path('api/',include('api.urls')),
     path('handballapi/',include('apiview.urls'))
    
 ]

@@ -16,12 +16,17 @@ Including another URLconf
 # from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path,include
-
+from api import views
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
 
-  
+  path("home",views.home),
+  path("blogs",views.blogposts),
+  path("getPlayers",views.getPlayers),
+  path("news",views.news),
+  path("matches",views.match),
+  path("getp/<playerId>/",views.getP)
    
 ]
 
