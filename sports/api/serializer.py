@@ -14,13 +14,13 @@ class BlogsSerializer(serializers.ModelSerializer):
 class matchesSerializer(serializers.ModelSerializer):
     class Meta:
         model = matches
-        fields = ["id","team1","team2","matchdate","location","discription"]
+        fields = "__all__"
 
 
 class upcomeingSerializer(serializers.ModelSerializer):
     class Meta:
         model = upcomeing
-        fields=["team1","team2","id","dis"]
+        fields="__all__"
 
 class videosSerializer(serializers.ModelSerializer):
     class Meta:
