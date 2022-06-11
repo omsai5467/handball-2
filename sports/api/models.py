@@ -4,9 +4,11 @@ from django.db import models
 # Create your models here.
 
 class upcomeing(models.Model):
+    logoofTeam1  = models.ImageField(upload_to="teams/")
+    logoofTeam2 = models.ImageField(upload_to="blogs/")
     team1=models.CharField(max_length=50)
     team2=models.CharField(max_length=50)
-    createdAt=models.DateTimeField(auto_now_add=True)
+    createdAt=models.DateTimeField()
     dis = models.TextField()
     
 
@@ -20,7 +22,7 @@ status = (
 class blogs(models.Model):
     img = models.ImageField(upload_to="blogs/",null=True, blank=True)
     name = models.CharField(max_length=50,blank=True)
-    createdAt= models.DateTimeField(auto_now_add=True)
+    createdAt = models.DateField(auto_now_add=True)
     Dis = models.TextField()
     status = models.CharField(max_length=50,choices=status)
     def __str__(self):
@@ -28,6 +30,8 @@ class blogs(models.Model):
 
 
 class matches(models.Model):
+    logoofTeam1  = models.ImageField(upload_to="teams/")
+    logoofTeam2 = models.ImageField(upload_to="blogs/")
     team1=models.CharField(max_length=50)
     team2=models.CharField(max_length=50)
     createdAt=models.DateTimeField(auto_now_add=True)
@@ -65,6 +69,3 @@ class NEWS(models.Model):
     discription = models.TextField()
     def __str__(self):
         return self.name
-
-
-

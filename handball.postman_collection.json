@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "adf21c01-8759-4890-a834-6e0898f5752c",
+		"name": "handball",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HOME",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://handballindia.org/api/home",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BLOGS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://handballindia.org/api/blogs",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"blogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEWS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://handballindia.org/api/news",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"news"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MATCHES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://handballindia.org/api/matches",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"matches"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PLAYERS WITH GIVEN  RANGE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start\":10,\n    \"end\":20\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://handballindia.org/api/getPlayers",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"getPlayers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET EACH PLAYER INFORMATION BY PASSING PLAYER ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://handballindia.org/api/getp/HFITN0022/",
+					"protocol": "http",
+					"host": [
+						"handballindia",
+						"org"
+					],
+					"path": [
+						"api",
+						"getp",
+						"HFITN0022",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -10,6 +10,8 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+import datetime
+from datetime import date
 objectID = None
 def getall():
     ap = playerdata.objects.all().filter(state = "andhra_pradesh(AP)").count()
@@ -120,7 +122,14 @@ def signup(request):
         user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
         return render(request,"home.html")
 
+def agefinder(x):
+    today = date.today()
+    date_time_str = f'{x} 08:15:27.243860'
+    date_time_obj = datetime.datetime.strptime(date_time_str, '%Y-%m-%d %H:%M:%S.%f')
+    birthDate= date_time_obj.date()
+    age = today.year - birthDate.year -((today.month, today.day) <(birthDate.month, birthDate.day))
 
+agefinder("1999-01-21")
 
 
 @login_required
@@ -164,7 +173,6 @@ def upload(re):
 
 
 @login_required
-
 def log(request):
     logout(request)
     return redirect('/')
@@ -306,3 +314,5 @@ def uploadData(request):
             obj.save()
         return HttpResponse("success uploded the data")
     return render(request,"upload.html")
+
+

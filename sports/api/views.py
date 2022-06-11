@@ -8,6 +8,21 @@ from . serializer import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+'''
+sen boys = 0
+jun boys = 1
+sub jun boys = 2
+minni boys = 3
+
+# girls
+sen women = 4
+jun girls = 5
+sub jun girls = 6
+mini gilrs = 7
+
+'''
+
+
 @api_view(["GET"])
 def home(request):
 	fixtures = matches.objects.all().filter(matchCompleated=False).order_by("-id")[:5]  
@@ -114,7 +129,7 @@ def match(request):
 def getP(request,playerId):
 	try:
 		pl=playerdata.objects.get(playerid=playerId)
-		p=playerdataSerializer(pl,many=False)
+		p=SinglePlayerdataSerializer(pl,many=False)
 		context = {
 		"status_code":200,
 		"msg":"DataFound",
@@ -128,6 +143,29 @@ def getP(request,playerId):
 		"msg":"DataNotFound"
 		}
 		return Response(context)
+
+
+
+@api_view(["GET"])
+def getBlog(request,id):
+	try:
+		b = blogs.objects.get(id=id)
+		l = blogsSerializer(b,many=False)
+		context = {
+			"status_code":200,
+			"msg":"DataFound",
+			"blog":l.data
+		}
+		return Response(context)
+	except:
+		context = {
+			"status_code":400,
+			"msg":"DataNotFound",
+			
+		}
+		return Response(context)
+
+
 
 
 

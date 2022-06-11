@@ -19,6 +19,15 @@ from django.urls import path,include
 
 from django.conf.urls.static import static
 from django.conf import settings
+from django.http import JsonResponse
+
+
+def custom404(request, exception=None):
+    return JsonResponse({
+        'status_code': 404,
+        'error': 'The resource was not found'
+    })
+handler404 = custom404
 urlpatterns = [
 
     path('admin/', include('smuggler.urls')),  

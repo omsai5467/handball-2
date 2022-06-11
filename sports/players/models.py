@@ -3,7 +3,7 @@ from pyexpat import model
 from django.db import models
 from django.contrib import admin
 # Create your models here.
-
+from datetime import date
 from django.contrib.auth.models import AbstractUser
 
 from django.contrib.auth.models import User
@@ -17,7 +17,7 @@ class playerdata(models.Model):
     phonenumber=models.CharField(max_length=12)
     Email=models.CharField(max_length=200)
     gender=models.CharField(max_length=20)
-    age = models.CharField(max_length=200)
+    DateOfBirth = models.CharField(max_length=200)
     city=models.CharField(max_length=200)
     state=models.CharField(max_length=200)
     photo = models.ImageField(upload_to = "profile/", null=True, blank=True)
@@ -33,8 +33,12 @@ class playerdata(models.Model):
     Weight = models.CharField(max_length=100,null=True, blank=True)
     GamesNo = models.CharField(max_length=500,null=True, blank=True)
     Losses = models.CharField(max_length=500,null=True, blank=True)
+    cat= models.IntegerField()
 
-
+# jun-boys = 0
+# seni-boys = 1
+# jun-girls = 2
+# senior-girls = 3
 
     def __str__(self):
         return self.playerid

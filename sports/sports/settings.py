@@ -43,11 +43,19 @@ INSTALLED_APPS = [
     "smuggler",
     "api",
     'rest_framework',
-    "corsheaders"
+    "corsheaders",
+    # "'rest_framework_simplejwt',"
     
 ]
 # AUTH_USER_MODEL = 'players.play'
-
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -145,17 +153,17 @@ CORS_ORIGIN_ALLOW_ALL=True
 
 
 #S3 BUCKETS CONFIG
+if(DEBUG == False):
+    AWS_ACCESS_KEY_ID = 'AKIATWMRM3WCFL7R5FM5'
+    AWS_SECRET_ACCESS_KEY = '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'
+    AWS_STORAGE_BUCKET_NAME = 'omsai'
+    AWS_S3_FILE_OVERWRITE = True
+    AWS_DEFAULT_ACL = "public-read"
+    AWS_QUERYSTRING_AUTH = False
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIATWMRM3WCFL7R5FM5'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'omsai'
-AWS_S3_FILE_OVERWRITE = True
-AWS_DEFAULT_ACL = None
-AWS_QUERYSTRING_AUTH = False
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
+# AWS_DEFAULT_ACL = None
 
 '''
 <?xml version="1.0" encoding="UTF-8"?>

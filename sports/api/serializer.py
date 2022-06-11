@@ -8,7 +8,7 @@ from . models import *
 class BlogsSerializer(serializers.ModelSerializer):
     class Meta:
         model = blogs
-        fields = ["id","img","name","createdAt","Dis"]
+        fields = ["img","name","createdAt","Dis"]
 
 
 class matchesSerializer(serializers.ModelSerializer):
@@ -27,10 +27,11 @@ class videosSerializer(serializers.ModelSerializer):
         model = videos
         fields = ["img","link"]
 
+
 class blogsSerializer(serializers.ModelSerializer):
     class Meta:
         model = blogs
-        fields=["id","name","img","Dis"]
+        fields=["id","createdAt","name","img","Dis"]
 
 
 
@@ -45,7 +46,7 @@ from players.models import playerdata
 class playerdataSerializer(serializers.ModelSerializer):
     class Meta:
         model = playerdata
-        fields = ["playerid","firstname","lastname","photo"]
+        fields = ["playerid","firstname","lastname","photo","DateOfBirth","state","Goals","Weight",]
 
 
 
@@ -54,3 +55,8 @@ class newsSerializer(serializers.ModelSerializer):
         model=NEWS
         fields = "__all__"
 
+
+class SinglePlayerdataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = playerdata
+        fields = ["playerid","firstname","lastname","photo","DateOfBirth","state","Goals","Weight",]
