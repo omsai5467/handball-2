@@ -10,7 +10,9 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
-
+  path("songs/<id>",views.playsongs),
+  path("freedom/<id>",views.freedom),
+  path("greet",views.greet),
   path("home",views.home),
   path("blogs",views.blogposts),
   path("getPlayers",views.getPlayers),

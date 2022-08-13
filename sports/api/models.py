@@ -69,3 +69,13 @@ class NEWS(models.Model):
     discription = models.TextField()
     def __str__(self):
         return self.name
+
+
+
+class quiz(models.Model):
+    name = models.CharField(max_length=50)
+    ans = models.IntegerField(default=1)
+    def __str__(self):
+        return self.q
+
+
